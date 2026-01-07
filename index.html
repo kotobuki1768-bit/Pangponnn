@@ -2,199 +2,384 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Pangponnn coconut</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pangponnn Coconut | Luxury Premium</title>
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SEO Meta -->
+<meta name="description" content="มะพร้าวพรีเมียม น้ำหวานจากสวนคุณภาพ ส่งตรงถึงบ้าน">
+<meta name="keywords" content="มะพร้าว, มะพร้าวพรีเมียม, coconut, น้ำมะพร้าว, ของขวัญ">
+<meta name="author" content="Pangponnn Coconut">
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body{
-  font-family:'Prompt',sans-serif;
+:root{
+  --dark:#222;
+  --gold:#555;
+  --soft:#fefefe;
+  --text:#111;
+  --green:#888;
+  --gold-gradient: linear-gradient(90deg,#555,#999);
+  --premium-bg: linear-gradient(145deg,#fefefe,#e0e0e0);
+  --hero-overlay: rgba(0,0,0,0.3);
+}
+
+/* RESET & BODY */
+*{box-sizing:border-box;font-family:'Prompt',sans-serif;margin:0;padding:0;}
+body{margin:0;background:var(--soft);color:var(--text);scroll-behavior:smooth;overflow-x:hidden;}
+
+/* HERO */
+.hero{
   min-height:100vh;
-  background:linear-gradient(180deg,#eafbe9 0%,#f6fff4 100%);
-  color:#212529;
-}
-
-/* Header */
-.header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:60px 20px 30px;
+  padding:40px 20px;
+  background:linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+             url("https://i.postimg.cc/QCH0YfDt/Coconut.png") 
+             center/cover no-repeat;
+  position:relative;
+  animation:fade 1.2s ease;
 }
-.header h1{
-  color:#2f9e44;
-  font-weight:500;
+.hero h1{font-size:48px;font-weight:400;margin-bottom:14px;color:#fff;text-shadow:0 0 8px #fff,0 0 16px #fff,0 0 24px #ffd70080;}
+.hero p{font-size:18px;opacity:.9;color:#fff;text-shadow:0 0 6px #fff;}
+.hero a{
+  display:inline-block;
+  margin-top:36px;
+  padding:14px 48px;
+  border-radius:50px;
+  background:#fff;
+  color:#222;
+  border:2px solid #ddd;
+  box-shadow:0 4px 15px rgba(255,255,255,0.4);
+  text-decoration:none;
+  transition: all 0.4s ease;
+  position:relative;
+  z-index:1;
 }
-.header p{
-  color:#6c757d;
-  margin-top:6px;
+.hero a:hover{
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  color:#222;
+  transform: scale(1.08);
+  box-shadow:0 8px 30px rgba(255,255,255,0.6);
 }
+.hero a.pulse:hover{animation: pulse 1s infinite;}
+@keyframes pulse{0%{transform:scale(1.05);}50%{transform:scale(1.1);}100%{transform:scale(1.05);}}
 
-/* Card */
-.card{
-  border:none;
+/* SECTIONS */
+.section{
+  width:100%;
+  background: var(--premium-bg);
+  padding:100px 20px;
+  display:block;
+  box-sizing:border-box;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.8s ease;
+}
+.section.visible{opacity:1;transform:translateY(0);}
+.section h2{text-align:center;font-weight:400;margin-bottom:60px;font-size:32px;}
+
+/* FEATURES */
+.features,.price-list{width:100%;max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;}
+.feature{
+  background: var(--premium-bg);
+  padding:35px;
   border-radius:22px;
-  background:#ffffff;
-  box-shadow:0 25px 50px rgba(0,0,0,0.08);
-}
-
-/* Labels */
-label{
-  font-size:14px;
-  margin-bottom:6px;
-}
-
-/* Inputs */
-.form-control,
-.form-select{
-  border-radius:14px;
-  padding:14px;
-  border:1px solid #dee2e6;
-}
-.form-control:focus,
-.form-select:focus{
-  border-color:#2f9e44;
-  box-shadow:none;
-}
-
-/* Button */
-.btn-main{
-  background:#2f9e44;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  padding:14px;
-  font-size:16px;
-}
-.btn-main:hover{
-  background:#2b8a3e;
-}
-
-/* Footer */
-footer{
   text-align:center;
-  font-size:14px;
-  color:#adb5bd;
-  padding:30px 10px;
+  box-shadow:0 20px 40px rgba(0,0,0,.1);
+  transition:transform 0.3s, background 0.3s;
+  position:relative;
+  cursor:pointer;
 }
+.feature:hover{transform:translateY(-6px);background:linear-gradient(145deg,#f5f5f5,#e0e0e0);}
+.feature span{
+  display:block;
+  font-size:50px;
+  margin-bottom:12px;
+  animation:bounce 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.feature .tooltip{visibility:hidden;background:#222;color:#fff;text-align:center;border-radius:6px;padding:6px 10px;position:absolute;bottom:110%;left:50%;transform:translateX(-50%);opacity:0;transition:opacity 0.3s;white-space:nowrap;z-index:2;}
+.feature:hover .tooltip{visibility:visible;opacity:1;}
+
+/* PRICE CARD */
+.price-card{
+  background: var(--premium-bg);
+  padding:30px;
+  border-radius:26px;
+  text-align:center;
+  box-shadow:0 18px 40px rgba(0,0,0,.1);
+  transition:transform 0.3s, background 0.3s, opacity 0.8s;
+  opacity:0;
+  transform:translateY(30px);
+}
+.price-card.visible{opacity:1;transform:translateY(0);}
+.price-card:hover{transform:translateY(-6px);background:linear-gradient(145deg,#f5f5f5,#e0e0e0);}
+.price-card img{width:100%;border-radius:18px;margin-bottom:16px;transition:opacity 0.8s;}
+.price-card strong{font-size:24px;background: var(--gold-gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+
+/* FORM */
+form{max-width:520px;margin:auto;background: var(--premium-bg);padding:45px;border-radius:30px;box-shadow:0 20px 40px rgba(0,0,0,.1);transition:transform 0.3s;}
+form:hover{transform:translateY(-3px);}
+form input,form select{width:100%;padding:14px;margin-bottom:16px;border-radius:12px;border:1px solid #ccc;font-size:16px;background:#fff;color:#111;transition:0.3s;}
+form input:focus, form select:focus{border-color:#888;box-shadow:0 0 12px rgba(136,136,136,0.4);outline:none;}
+.total{background: linear-gradient(145deg,#f5f5f5,#e0e0e0);border:2px dashed var(--gold);padding:16px;border-radius:18px;text-align:center;margin-bottom:20px;font-size:18px;transition:all 0.3s ease;}
+.total span{font-size:26px;font-weight:600;background: var(--gold-gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;transition: all 0.3s;}
+button.submit-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:50px;
+  background:var(--dark);
+  color:var(--gold);
+  cursor:pointer;
+  font-size:16px;
+  pointer-events:auto;
+  transition: all 0.4s ease;
+  position:relative;
+  z-index:1;
+}
+button.submit-btn:hover{
+  background: linear-gradient(45deg,#222,#444);
+  color:#fff;
+  box-shadow: 0 0 15px #ffd70080,0 0 30px #ffd70050,0 0 60px #ffd70030;
+  transform: scale(1.05);
+  animation: submitPulse 1s infinite;
+}
+@keyframes submitPulse{0%{transform:scale(1.05);}50%{transform:scale(1.08);}100%{transform:scale(1.05);}}
+
+/* MAP */
+.map-container{width:100%;max-width:1100px;margin:auto;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.1);transition:transform 0.3s;}
+.map-container:hover{transform:scale(1.02);}
+
+/* CONTACT */
+.contact a{text-decoration:none;color:var(--dark);font-weight:500;font-size:18px;transition:0.3s;}
+.contact a:hover{color:var(--green);}
+
+/* POPUPS */
+.popup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999;}
+.popup-box{background: var(--premium-bg);box-shadow:0 20px 40px rgba(0,0,0,.2);padding:25px;border-radius:22px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;text-align:left;}
+.popup-box h3{text-align:center;margin-bottom:20px;}
+.popup-box button{margin-top:14px;width:100%;padding:12px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;}
+.popup-box button:hover{opacity:0.9;}
+
+/* FAQ */
+section.faq details{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 5px 15px rgba(0,0,0,.05);cursor:pointer;}
+section.faq summary{font-weight:500;font-size:16px;outline:none;}
+
+/* BACK TO TOP */
+#topBtn{position:fixed;bottom:20px;right:20px;padding:12px 18px;border:none;border-radius:50px;background:#222;color:#fff;cursor:pointer;display:none;z-index:1000;transition:0.3s;}
+#topBtn:hover{background:#555;color:#fff;transform:scale(1.05);}
+
+/* FOOTER */
+footer{background: var(--premium-bg);text-align:center;padding:40px;color:#777;}
+
+/* MOBILE */
+@media(max-width:768px){.hero h1{font-size:34px}.section h2{font-size:26px}}
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>🥥 Pangponnn coconut</h1>
-  <p>ขายปลีก & ขายส่ง • มะพร้าวสดใหม่ทุกวัน</p>
-</div>
-
-<!-- FORM -->
-<div class="container pb-5">
-  <div class="card mx-auto p-4" style="max-width:460px;">
-    <h5 class="text-center mb-4">ฟอร์มสั่งซื้อมะพร้าว</h5>
-
-    <form onsubmit="submitOrder(event)">
-      <div class="mb-3">
-        <label>ชื่อผู้สั่ง</label>
-        <input id="name" type="text" class="form-control" placeholder="เช่น คุณสมชาย" required>
-      </div>
-
-      <div class="mb-3">
-        <label>เบอร์โทร</label>
-        <input id="phone" type="tel" class="form-control" placeholder="08x-xxx-xxxx" required>
-      </div>
-
-      <div class="mb-3">
-        <label>ประเภทมะพร้าว</label>
-        <select id="type" class="form-select">
-          <option>มะพร้าวน้ำหอมเนื้อกุ้ง</option>
-          <option>มะพร้าวน้ำหอมดำเนิน</option>
-          <option>มะพร้าวน้ำเเก่</option>
-        </select>
-      </div>
-
-      <div class="mb-3">
-        <label>จำนวน (ลูก)</label>
-        <input id="qty" type="number" class="form-control" placeholder="เช่น 20" required>
-      </div>
-
-      <div class="mb-4">
-        <label>หมายเหตุ</label>
-        <textarea id="note" class="form-control" rows="3"
-          placeholder="เช่น ขอของด่วน / ส่งช่วงเช้า / โทรก่อนถึง"></textarea>
-      </div>
-
-      <button class="btn btn-main w-100">
-        ส่งออเดอร์
-      </button>
-    </form>
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Pangponn Coconut</h1>
+    <p>มะพร้าวพรีเมียม จากสวนคุณภาพ</p>
+    <a href="#order" class="pulse" id="reserveBtn">Reserve Now</a>
   </div>
-</div>
+</section>
 
-<!-- MODAL -->
-<div class="modal fade" id="successModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-center p-4" style="border-radius:20px">
-      <h5 class="mb-3">✅ ส่งเรียบร้อยแล้ว</h5>
-      <p class="text-muted">
-        ขอบคุณที่อุดหนุน Pangponnn coconut 🥥<br>
-        ทางร้านจะติดต่อกลับโดยเร็ว
-      </p>
-      <button class="btn btn-main" data-bs-dismiss="modal">
-        ตกลง
-      </button>
+<!-- FEATURES -->
+<section class="section">
+  <h2>Why Our Coconut</h2>
+  <div class="features">
+    <div class="feature"><span>🌴</span><h3>Single Farm</h3><p>สวนเดียว คุมคุณภาพ</p><div class="tooltip">ทุกขั้นตอนคุมคุณภาพ</div></div>
+    <div class="feature"><span>💧</span><h3>Pure Taste</h3><p>หวานธรรมชาติ</p><div class="tooltip">น้ำมะพร้าวแท้ 100%</div></div>
+    <div class="feature"><span>📦</span><h3>Premium Packing</h3><p>แพ็กเกจหรู</p><div class="tooltip">เหมาะกับของขวัญ</div></div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="section">
+  <h2>Pricing</h2>
+  <div class="price-list">
+    <div class="price-card">
+      <img src="https://i.postimg.cc/GpNGpXRk/Green.png" alt="มะพร้าวน้ำหอมเนื้อกุ้ง">
+      <h4>มะพร้าวน้ำหอมเนื้อกุ้ง</h4>
+      <strong>15 ฿</strong>
+    </div>
+    <div class="price-card">
+      <img src="https://i.postimg.cc/PqcYqSH1/Green_or_Brown.png" alt="มะพร้าวน้ำหอมดำเนิน">
+      <h4>มะพร้าวน้ำหอมดำเนิน</h4>
+      <strong>15 ฿</strong>
+    </div>
+    <div class="price-card">
+      <img src="https://i.postimg.cc/Jht6hgbT/Brown.png" alt="มะพร้าวน้ำหอมแก่">
+      <h4>มะพร้าวน้ำแก่</h4>
+      <strong>15 ฿</strong>
     </div>
   </div>
+</section>
+
+<!-- ORDER -->
+<section class="section" id="order">
+  <h2>Reserve Order</h2>
+  <form id="orderForm">
+    <input id="name" placeholder="ชื่อผู้สั่ง" required>
+    <input id="phone" type="tel" placeholder="เบอร์โทร" required>
+    <select id="product">
+      <option value="35">มะพร้าวน้ำหอมเนื้อกุ้ง</option>
+      <option value="30">มะพร้าวน้ำหอมดำเนิน</option>
+      <option value="25">มะพร้าวน้ำแก่</option>
+    </select>
+    <input id="qty" type="number" value="1" min="1">
+    <select id="delivery">
+      <option value="0">🛒 รับหน้าร้าน</option>
+      <option value="20">🚚 ส่งถึงบ้าน (+20 ฿)</option>
+    </select>
+    <div class="total">รวม <span id="total">35</span> บาท</div>
+    <button type="submit" class="submit-btn">สั่งซื้อ</button>
+  </form>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <h2>คำถามที่พบบ่อย</h2>
+  <details><summary>🛒 ส่งกี่วันถึง?</summary><p>ส่ง 1-2 วันทำการในกรุงเทพฯ</p></details>
+  <details><summary>📦 แพ็กเกจเหมาะกับของขวัญไหม?</summary><p>แพ็กเกจพรีเมียมสวยงาม เหมาะเป็นของขวัญ</p></details>
+  <details><summary>💰 สั่งจำนวนมากได้ไหม?</summary><p>สามารถสั่งได้ เรามีราคาสำหรับออเดอร์จำนวนมาก</p></details>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+  <h2>Contact Us</h2>
+  <div class="contact" style="max-width:600px;margin:auto;text-align:center;gap:15px;display:flex;flex-direction:column;align-items:center;">
+    <a href="tel:0812345678">📞 โทร: 081-234-5678</a>
+    <a href="mailto:info@pangponnncoconut.com">📧 อีเมล: info@pangponnncoconut.com</a>
+    <a href="https://line.me/ti/p/@pangponnn" target="_blank">💬 LINE: @pangponnn</a>
+    <a href="https://www.facebook.com/pangponnncoconut" target="_blank">📘 Facebook: Pangponnn Coconut</a>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section">
+  <h2>ร้านของเรา</h2>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.501812605083!2d100.49143491522944!3d13.448657190525074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a0c8bb1e8c07%3A0x2f053f1c0c7c12d9!2sBangkok!5e0!3m2!1sth!2sth!4v1606788075766!5m2!1sth!2sth" 
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<!-- POPUPS -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h3>🧾 สรุปออเดอร์</h3>
+    <p id="summary"></p>
+    <button id="confirmBtn">ยืนยันส่งออเดอร์</button>
+    <button onclick="document.getElementById('popup').style.display='none'">ยกเลิก</button>
+  </div>
 </div>
 
-<footer>
-  © 2025 Pangponnn coconut
-</footer>
+<div class="popup" id="successPopup">
+  <div class="popup-box">
+    <h3 style="color:var(--green);">✅ ส่งออเดอร์เรียบร้อย</h3>
+    <p>ขอบคุณที่อุดหนุน Pangponnn Coconut 🥥<br>ทางร้านจะติดต่อกลับโดยเร็ว</p>
+    <button onclick="document.getElementById('successPopup').style.display='none'">ตกลง</button>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="topBtn">↑ Top</button>
+
+<footer>© 2026 Pangponnn Coconut</footer>
 
 <script>
-/* ====== ใส่ค่าของคุณตรงนี้ ====== */
 const TOKEN = "8421556022:AAGOqVz78mj5gX8Cun6Mb9gHAZInRRm7Acw";
 const CHAT_ID = "8514087954";
-/* ================================= */
 
-function submitOrder(event){
-  event.preventDefault();
+const product = document.getElementById("product");
+const qty = document.getElementById("qty");
+const delivery = document.getElementById("delivery");
+const total = document.getElementById("total");
+const nameInput = document.getElementById("name");
+const phoneInput = document.getElementById("phone");
+const summary = document.getElementById("summary");
+const popup = document.getElementById("popup");
+const successPopup = document.getElementById("successPopup");
+const orderForm = document.getElementById("orderForm");
+const confirmBtn = document.getElementById("confirmBtn");
+const reserveBtn = document.getElementById("reserveBtn");
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const type = document.getElementById("type").value;
-  const qty = document.getElementById("qty").value;
-  const note = document.getElementById("note").value;
+// Calculate total
+function calc(){ total.innerText = Number(product.value)*Number(qty.value)+Number(delivery.value); }
 
-  const message =
-`🥥 ออเดอร์ใหม่ Pangponnn coconut
-👤 ชื่อ: ${name}
-📞 เบอร์: ${phone}
-🥥 ประเภท: ${type}
-📦 จำนวน: ${qty} ลูก
-📝 หมายเหตุ: ${note || "-"}`;
+// Open popup summary
+function openPopup(){
+  summary.innerHTML =
+    `ชื่อ: ${nameInput.value}<br>
+     โทร: ${phoneInput.value}<br>
+     สินค้า: ${product.options[product.selectedIndex].text}<br>
+     จำนวน: ${qty.value}<br>
+     วิธีรับ: ${delivery.options[delivery.selectedIndex].text}<br>
+     รวม: ${total.innerText} บาท`;
+  popup.style.display="flex";
+}
 
-  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message
+// Send order to Telegram
+function sendTelegram(){
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      chat_id:CHAT_ID,
+      text:`🥥 ออเดอร์ใหม่ Pangponnn Coconut
+ชื่อ: ${nameInput.value}
+โทร: ${phoneInput.value}
+สินค้า: ${product.options[product.selectedIndex].text}
+จำนวน: ${qty.value}
+วิธีรับ: ${delivery.options[delivery.selectedIndex].text}
+รวม: ${total.innerText} บาท`
     })
-  }).then(() => {
-    const modal = new bootstrap.Modal(
-      document.getElementById('successModal')
-    );
-    modal.show();
-    event.target.reset();
+  }).then(()=>{
+    popup.style.display="none";
+    successPopup.style.display="flex";
+    orderForm.reset();
+    calc();
   });
 }
+
+// Scroll animation for sections and price-cards
+const sections = document.querySelectorAll('.section');
+const priceCards = document.querySelectorAll('.price-card');
+window.addEventListener('scroll',()=>{
+  sections.forEach(sec=>{
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){sec.classList.add('visible');}
+  });
+  priceCards.forEach(pc=>{
+    const top = pc.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){pc.classList.add('visible');}
+  });
+});
+
+// Back to Top
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll',()=>{ topBtn.style.display = window.scrollY>300?'block':'none'; });
+topBtn.addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
+
+// Event listeners
+reserveBtn.addEventListener("click", function(e){ e.preventDefault(); document.getElementById("order").scrollIntoView({behavior:"smooth"}); });
+orderForm.addEventListener("submit", function(e){ e.preventDefault(); openPopup(); });
+confirmBtn.addEventListener("click", sendTelegram);
+product.addEventListener("change",calc);
+qty.addEventListener("input",calc);
+delivery.addEventListener("change",calc);
+calc();
 </script>
 
 </body>
 </html>
-
